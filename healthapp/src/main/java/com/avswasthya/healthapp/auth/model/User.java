@@ -44,6 +44,9 @@ public class User {
     @Column(name = "is_mobile_verified")
     private boolean isMobileVerified;
 
+    @Column(name="is_email_verified")
+    private boolean isEmailVerified;
+
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Patient patient;
 

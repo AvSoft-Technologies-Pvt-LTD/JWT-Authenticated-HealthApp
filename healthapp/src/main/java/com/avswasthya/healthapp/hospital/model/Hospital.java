@@ -8,20 +8,53 @@ import lombok.Setter;
 import java.util.List;
 
 @Entity
-@Table(name="hospital")
-@Setter
+@Table(name = "hospital")
 @Getter
+@Setter
 public class Hospital {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
+    @Column(name="hospitalName",unique = true, nullable = false)
+    private String hospitalName;
 
-    private String address;
+    @Column(name="address",unique = true, nullable = false)
+    private String hospitalAddress;
 
-    private String phone;
+    @Column(name="Type",nullable = false)
+    private String hospitalType;
 
-    @OneToMany(mappedBy = "hospital")
+    @Column(name="City",nullable = false)
+    private String hospitalCity;
+
+    @Column(name="CEO",nullable = false)
+    private String hospitalCEO;
+
+    @Column(name="medicalDirector",nullable = false)
+    private String medicalDirector;
+
+    @Column(name="phone",unique = true, nullable = false)
+    private String hospitalPhone;
+
+    @Column(name="GSTNumber",unique = true, nullable = false)
+    private String hospitalGSTNumber;
+
+    @Lob
+    @Column(name="nabhCertification",nullable = false)
+    private byte[] nabhCertificate;
+
+    @Lob
+    @Column(name="image")
+    private byte[] hospitalImage;
+
+    @Column(name="scan_labs")
+    private String hospitalScan;
+
+    @Column(name="hospital_Pharmacy")
+    private String hospitalPharmacy;
+
+    @OneToMany(mappedBy = "hospital", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Doctor> doctors;
 }

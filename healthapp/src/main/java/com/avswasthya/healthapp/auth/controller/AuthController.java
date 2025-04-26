@@ -20,7 +20,8 @@ public class AuthController {
 
     private final UserService userService;
     private final AuthenticationManager authenticationManager;
-    // ✅ Constructor injection is preferred over field injection
+
+
     @Autowired
     public AuthController(UserService userService, AuthenticationManager authenticationManager) {
         this.userService = userService;
@@ -32,6 +33,7 @@ public class AuthController {
         log.info("Health is ok !");
         return "Ok";
     }
+
 
     @PostMapping("/signup")
     public ResponseEntity<String> signup(@RequestBody User user) {
@@ -46,7 +48,7 @@ public class AuthController {
                 user.getPatient().setUser(user);
             }
 
-            userService.save(user); // Will encode password inside service
+            userService.save(user);
 
             return ResponseEntity.ok(user.getRole().toString().toLowerCase() + " registered successfully.");
         } catch (Exception e) {

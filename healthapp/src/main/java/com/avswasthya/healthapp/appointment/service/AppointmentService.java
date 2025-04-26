@@ -34,4 +34,6 @@ public class AppointmentService {
         appointment.setStatus(AppointmentStatus.valueOf(status.toUpperCase()));
         appointmentRepository.save(appointment);
     }
+
+
 }

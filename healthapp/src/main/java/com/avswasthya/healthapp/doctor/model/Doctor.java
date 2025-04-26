@@ -36,7 +36,7 @@ public class Doctor {
     @Column(nullable = false)
     private String degree;
 
-    @Column(nullable = false)
+    @Column(name="isFreelancer")
     private boolean isFreelancer;
 
     @OneToMany(mappedBy = "doctor")
